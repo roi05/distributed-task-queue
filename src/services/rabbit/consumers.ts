@@ -1,5 +1,5 @@
-import { imageEnhancemenConsumer } from "./consumer/image-enhancement.consumer";
+import { imageEnhancementConsumer } from "./consumer/image-enhancement.consumer";
 
 export async function startConsumers() {
-  await imageEnhancemenConsumer();
+  await imageEnhancementConsumer();
 }

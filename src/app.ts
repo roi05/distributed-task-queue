@@ -1,5 +1,5 @@
 import express from "express";
-import jobsRouter from "./routes/jobs";
+import jobsRouter from "./routes/jobs.route";
 
 const app = express();
 

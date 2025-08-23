@@ -27,3 +27,5 @@ Thumbs.db
 
 # Coverage output from Vitest/Jest
 coverage/
+
+image-output
