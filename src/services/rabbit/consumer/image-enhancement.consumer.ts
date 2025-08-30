@@ -17,6 +17,7 @@ export async function imageEnhancementConsumer() {
     if (!msg) return;
 
     const job: ImageJob = JSON.parse(msg.content.toString());
+    updateJob(job.id, { status: "processing" });
     logger.info(`📥 Processing image job ${job.id}`, job);
 
     try {

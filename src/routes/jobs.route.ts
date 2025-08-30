@@ -28,15 +28,20 @@ router.post("/", async (req, res) => {
     Object.values(IMAGE_OPERATION).includes(op as IMAGE_OPERATION),
   );
 
+  if (validOps.length === 0) {
+    return res.status(400).json({ error: "No valid operations provided" });
+  }
+
   const id = crypto.randomUUID();
+  const date = new Date()
 
   const job: ImageJob = {
-    id: crypto.randomUUID(),
+    id: id,
     imageUrl,
     operations,
-    status: "queued",
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    status: 'queued',
+    createdAt: date,
+    updatedAt: date,
   };
 
   saveJob(job);
