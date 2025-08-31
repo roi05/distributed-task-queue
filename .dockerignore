@@ -1,0 +1,30 @@
+# Ignore node_modules (will be reinstalled inside container)
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# Ignore build output (dist will be generated inside container)
+dist
+
+# Ignore TypeScript cache
+*.tsbuildinfo
+
+# Ignore local env files
+.env
+.env.*
+
+# Ignore Git
+.git
+.gitignore
+
+# Ignore IDE/editor stuff
+.vscode
+.idea
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+
+image-output

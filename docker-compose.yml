@@ -1,12 +1,31 @@
-version: "3.9"
-
 services:
   rabbitmq:
     image: rabbitmq
-    container_name: rabbitmq
     ports:
       - "5672:5672" # for app connection
       - "15672:15672" # management UI
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+    restart: always
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+    container_name: express-app
+    ports:
+      - "3000:3000"
+   
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: always
